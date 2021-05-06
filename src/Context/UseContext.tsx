@@ -3,6 +3,12 @@ import React,{useReducer,createContext} from 'react'
 import {Reducer} from './Reducer'
 import {ADD_TRANSACTION,REMOVE_TRANSACTION} from './Types'
 
+export type addtransaction={
+    id: number,
+    desc: string,
+    amount: number
+}
+
 export interface TransactionType{
     transactions:{
     id: number,
@@ -12,13 +18,9 @@ export interface TransactionType{
    addTransaction: (transaction: addtransaction) => void,
    removeTransaction:(id: number) => void
 }
-export type addtransaction={
-    id: number,
-    desc: string,
-    amount: number
-}
 
-const initialValue: TransactionType={
+
+const InitialValue: TransactionType={
     transactions:[
         {id:1,desc:"Salary",amount:+1000},
         {id:2,desc:"Bonus",amount:+500},
@@ -26,17 +28,22 @@ const initialValue: TransactionType={
         {id:4,desc:"Dinner",amount:-300},
     ],
     addTransaction: () => {},
-    removeTransaction: () => {}
+    removeTransaction: () => {},
 
 }
-export const CreateUserContext=createContext<TransactionType>(initialValue)
+export const CreateUserContext=createContext<TransactionType>(InitialValue)
 
 // we create the context api in smae file 
 
-export const UseContext: React.FC<React.ReactNode>= (props) => {
+// The React.NOde is default type of children attribute
+// we get all the compoents via porps and we do destructure thischildren beacuse by default we get children name
+// (children:React.ReactNode)
+export const UseContext: React.FC<React.ReactNode>= ({children}) => {
        
 // UseReucer
-   const [state,dispatch]=useReducer(Reducer,initialValue)
+   const [state,dispatch]=useReducer(Reducer,InitialValue)
+   console.log(state);
+   
 
 const addTransaction=(transaction:addtransaction) =>{
     dispatch({
@@ -60,7 +67,7 @@ const removeTransaction=(id: number) =>{
                 addTransaction,
                 removeTransaction
             }}>
-             {props.children}
+             {children}
             </CreateUserContext.Provider>
         </div>
     )
