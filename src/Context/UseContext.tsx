@@ -31,7 +31,7 @@ const InitialValue: TransactionType={
     removeTransaction: () => {},
 
 }
-export const CreateUserContext=createContext<TransactionType>(InitialValue)
+export const CreateUserContext=createContext<Partial<TransactionType>>({})
 
 // we create the context api in smae file 
 

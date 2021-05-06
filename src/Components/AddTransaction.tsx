@@ -4,7 +4,7 @@ import {TransactionType} from '../Context/UseContext'
 
 export const AddTransaction = () => {
 
-const {addTransaction}=useContext<TransactionType>(CreateUserContext)
+const {addTransaction}=useContext(CreateUserContext)
 console.log(addTransaction);
 
 const [desc, getdec]=useState("")
