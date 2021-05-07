@@ -1,6 +1,6 @@
 import React,{useContext,useState} from 'react'
 import {CreateUserContext} from '../Context/UseContext'
-import {TransactionType} from '../Context/UseContext'
+import {TransactionType} from '../Context/TypeScript'
 
 export const AddTransaction = () => {
 

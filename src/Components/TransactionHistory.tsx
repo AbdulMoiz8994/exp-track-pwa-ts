@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import {CreateUserContext} from '../Context/UseContext'
-import {TransactionType} from '../Context/UseContext'
+// import {TransactionType} from '../Context/UseContext'
 
 export interface Transactions{
        id: number,
@@ -10,7 +10,7 @@ export interface Transactions{
 
 
 export const TransactionHistory = () => {
-const {transactions}=useContext<TransactionType>(CreateUserContext)
+const {transactions}=useContext(CreateUserContext)
 console.log(transactions);
 
 

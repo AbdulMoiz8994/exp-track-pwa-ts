@@ -1,23 +1,9 @@
-import React,{useReducer,createContext} from 'react'
+import React,{useReducer,createContext,Reducer} from 'react'
 // import {CreateUserContext} from './CreateContext'
-import {Reducer} from './Reducer'
+import UseReducers from './AppReducer'
 import {ADD_TRANSACTION,REMOVE_TRANSACTION} from './Types'
+import {Addtransaction,TransactionType} from './TypeScript'
 
-export type addtransaction={
-    id: number,
-    desc: string,
-    amount: number
-}
-
-export interface TransactionType{
-    transactions:{
-    id: number,
-    desc:string,
-    amount: number
-}[];
-   addTransaction: (transaction: addtransaction) => void,
-   removeTransaction:(id: number) => void
-}
 
 
 const InitialValue: TransactionType={
@@ -31,7 +17,7 @@ const InitialValue: TransactionType={
     removeTransaction: () => {},
 
 }
-export const CreateUserContext=createContext<Partial<TransactionType>>({})
+export const CreateUserContext=createContext<TransactionType>(InitialValue)
 
 // we create the context api in smae file 
 
@@ -41,22 +27,22 @@ export const CreateUserContext=createContext<Partial<TransactionType>>({})
 export const UseContext: React.FC<React.ReactNode>= ({children}) => {
        
 // UseReucer
-   const [state,dispatch]=useReducer(Reducer,InitialValue)
+   const [state,dispatch]=useReducer(UseReducers,InitialValue)
    console.log(state);
    
 
-const addTransaction=(transaction:addtransaction) =>{
+const addTransaction=(transaction:Addtransaction) =>{
     dispatch({
-        type: ADD_TRANSACTION,
+        type: 'ADD_TRANSACTION',
         payload: transaction
-    })
+    });
 
 }
 const removeTransaction=(id: number) =>{
    dispatch({
     type: REMOVE_TRANSACTION,
      payload: id    
-   })
+   });
 
 }
 
