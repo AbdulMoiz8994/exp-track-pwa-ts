@@ -1,11 +1,7 @@
 import React,{useContext,useState} from 'react'
-import {CreateUserContext} from '../Context/UseContext'
-import {TransactionType} from '../Context/TypeScript'
 
 export const AddTransaction = () => {
 
-const {addTransaction}=useContext(CreateUserContext)
-console.log(addTransaction);
 
 const [desc, getdec]=useState("")
 const[amount,setamount]=useState(0)
@@ -19,7 +15,6 @@ const onSubmitFunc=(event: React.FormEvent<HTMLFormElement>) =>{
        desc,
        amount: +(amount), 
       } 
-         addTransaction(addAll)           
 }
 getdec('')
 setamount(0)

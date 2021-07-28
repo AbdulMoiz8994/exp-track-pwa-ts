@@ -1,5 +1,4 @@
 import React,{useContext} from 'react'
-import {CreateUserContext} from '../Context/UseContext'
 // import {TransactionType} from '../Context/UseContext'
 
 export interface Transactions{
@@ -10,14 +9,13 @@ export interface Transactions{
 
 
 export const TransactionHistory = () => {
-const {transactions}=useContext(CreateUserContext)
-console.log(transactions);
+
 
 
     return (
         <div>
             <h2>Transaction History</h2>
-
+{/* 
             <ul>
                 {transactions.map((transObj: Transactions) =>{
                     return(
@@ -26,7 +24,7 @@ console.log(transactions);
                         </li>
                     )
                 })}
-            </ul>
+            </ul> */}
         </div>
     )
 }
